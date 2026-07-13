@@ -54,6 +54,23 @@ JWT to confirm a real, correctly-shaped token: issuer
 `repository`/`ref` claims. This stops short of an actual Google STS
 exchange, which needs a real GCP project.
 
+Actual output from that workflow run
+([full log](https://github.com/Rashmioffcialpage/gcloud-auth-action/actions)):
+
+```
+Real GitHub OIDC token fetched successfully.
+Header alg: RS256
+Issuer: https://token.actions.githubusercontent.com
+Audience: https://iam.googleapis.com/projects/000/locations/global/workloadIdentityPools/test/providers/test
+Subject: repo:Rashmioffcialpage/gcloud-auth-action:ref:refs/heads/main
+Repository: Rashmioffcialpage/gcloud-auth-action
+Ref: refs/heads/main
+All real-OIDC-token assertions passed.
+```
+
+A real, RS256-signed token, with the exact audience requested and the
+real repository/ref this workflow ran on — not a placeholder.
+
 ## Two real things this testing surfaced
 
 While building the fully-local test in layer 1, `@actions/core`'s
