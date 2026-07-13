@@ -1,0 +1,40 @@
+name: "gcloud-auth-action"
+description: "Authenticate to Google Cloud via Workload Identity Federation or a service account key"
+inputs:
+  workload_identity_provider:
+    description: "Full resource name of the Workload Identity Provider"
+    required: false
+  service_account:
+    description: "Email of the service account to impersonate"
+    required: false
+  credentials_json:
+    description: "Service account key JSON (raw or base64-encoded)"
+    required: false
+  project_id:
+    description: "Google Cloud project ID"
+    required: false
+  audience:
+    description: "Audience for the GitHub OIDC token"
+    required: false
+  universe:
+    description: "Google Cloud universe domain (or a mock server base URL for testing)"
+    required: false
+    default: "googleapis.com"
+  create_credentials_file:
+    description: "Write a credentials file for gcloud/gsutil/bq to pick up automatically"
+    required: false
+    default: "true"
+  export_environment_variables:
+    description: "Export GOOGLE_APPLICATION_CREDENTIALS and related env vars"
+    required: false
+    default: "true"
+outputs:
+  auth_token:
+    description: "The generated access token"
+  credentials_file_path:
+    description: "Path to the generated credentials file"
+  project_id:
+    description: "The project ID that was used"
+runs:
+  using: "node20"
+  main: "dist/index.js"

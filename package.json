@@ -1,0 +1,25 @@
+{
+  "name": "gcloud-auth-action",
+  "version": "0.1.0",
+  "description": "GitHub Action for authenticating to Google Cloud via Workload Identity Federation or service account keys",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "ncc build -m src/main.ts -o dist",
+    "test": "node --require ts-node/register --test tests/**/*.test.ts",
+    "mock-server": "node --require ts-node/register mock-server/server.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rashmioffcialpage/gcloud-auth-action.git"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@actions/core": "^1.11.1"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@vercel/ncc": "^0.38.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2"
+  }
+}
